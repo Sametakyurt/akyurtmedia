@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Akyurt Media — Record Label & Distribution</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink: #0e0e0e;
+  --ink-muted: #6b6b6b;
+  --ink-faint: #c0c0c0;
+  --paper: #f9f9f9;
+  --paper-pure: #ffffff;
+  --line: rgba(14,14,14,0.08);
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'DM Sans', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background:
+    radial-gradient(circle at 18% 18%, rgba(255,255,255,0.96), transparent 32%),
+    radial-gradient(circle at 82% 12%, rgba(230,230,230,0.42), transparent 30%),
+    linear-gradient(135deg, #f6f6f4 0%, #ededeb 48%, #f8f8f7 100%);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 300;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 3rem;
+  background: rgba(249,249,249,0.93);
+  backdrop-filter: blur(14px);
+  border-bottom: 0.5px solid var(--line);
+}
+
+.nav-logo {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.nav-center {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.nav-center a {
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ink-muted);
+  transition: color 0.25s;
+}
+.nav-center a:hover { color: var(--ink); }
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Language toggle */
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border: 0.5px solid var(--line);
+  overflow: hidden;
+}
+
+.lang-btn {
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  padding: 0.4rem 0.75rem;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: var(--ink-muted);
+  transition: background 0.2s, color 0.2s;
+  font-family: var(--sans);
+}
+.lang-btn.active {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.nav-cta {
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--paper);
+  background: var(--ink);
+  padding: 0.5rem 1.3rem;
+  transition: background 0.25s;
+}
+.nav-cta:hover { background: #2a2a2a; }
+
+/* ── HERO ── */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 10.5rem 3rem 5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--serif);
+  font-size: clamp(10rem, 20vw, 20rem);
+  font-weight: 300;
+  color: rgba(14,14,14,0.04);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.hero-eyebrow {
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-bottom: 1.5rem;
+}
+
+.hero-headline {
+  font-family: var(--serif);
+  font-size: clamp(3.2rem, 7.5vw, 7.5rem);
+  font-weight: 300;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  max-width: 14ch;
+}
+
+.hero-headline em {
+  font-style: italic;
+  color: var(--ink-muted);
+}
+
+.hero-bottom {
+  margin-top: 2.5rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.7s forwards;
+}
+
+.hero-desc {
+  font-size: 0.88rem;
+  color: var(--ink-muted);
+  max-width: 38ch;
+  line-height: 1.75;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  color: var(--ink);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: gap 0.3s;
+  white-space: nowrap;
+}
+.hero-cta:not(.glass-card) {
+  border-bottom: 0.5px solid var(--ink);
+  padding-bottom: 0.25rem;
+}
+.hero-cta:hover { gap: 1.6rem; }
+.hero-cta svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+/* ── STATS ── */
+.stats-bar {
+  background: var(--ink);
+  color: var(--paper);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  opacity: 0;
+  animation: fadeUp 1s ease 0.9s forwards;
+}
+
+.stat-item {
+  padding: 2rem 3rem;
+  border-right: 0.5px solid rgba(249,249,249,0.12);
+}
+.stat-item:last-child { border-right: none; }
+
+.stat-num {
+  font-family: var(--serif);
+  font-size: 2.8rem;
+  font-weight: 300;
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+
+.stat-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(247,245,240,0.4);
+}
+
+/* ── MARQUEE ── */
+.marquee-wrap {
+  border-top: 0.5px solid var(--line);
+  border-bottom: 0.5px solid var(--line);
+  padding: 0.9rem 0;
+  overflow: hidden;
+  white-space: nowrap;
+  background: var(--paper-pure);
+}
+
+.marquee-inner {
+  display: inline-flex;
+  animation: marquee 28s linear infinite;
+}
+
+.marquee-item {
+  font-family: var(--serif);
+  font-size: 0.95rem;
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: 0.04em;
+  padding: 0 2rem;
+  color: var(--ink-muted);
+}
+.marquee-dot {
+  padding: 0 0.5rem;
+  color: var(--ink-faint);
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ── SECTION BASE ── */
+section { padding: 7rem 3rem; }
+
+.section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  border-top: 0.5px solid var(--line);
+  padding-top: 2rem;
+  margin-bottom: 5rem;
+}
+
+.section-num {
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+}
+
+.section-title {
+  font-family: var(--serif);
+  font-size: clamp(2.4rem, 4.5vw, 4.2rem);
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+
+/* ── ARTISTS ── */
+#artists { background: rgba(255,255,255,0.58); backdrop-filter: blur(10px); }
+
+.artists-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.artist-card {
+  padding: 2.5rem;
+  border-right: 0.5px solid var(--line);
+  border-bottom: 0.5px solid var(--line);
+  position: relative;
+  overflow: hidden;
+  transition: background 0.35s;
+}
+.artist-card:nth-child(3n) { border-right: none; }
+.artist-card:nth-child(4),
+.artist-card:nth-child(5),
+.artist-card:nth-child(6) { border-bottom: none; }
+.artist-card:hover { background: var(--paper); }
+
+.artist-index {
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
+}
+
+.artist-name {
+  font-family: var(--serif);
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+}
+
+.artist-genre {
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-bottom: 2rem;
+}
+
+.artist-spotify {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--ink-muted);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-bottom: 0.5px solid var(--line);
+  padding-bottom: 0.2rem;
+  transition: color 0.25s, border-color 0.25s, gap 0.25s;
+}
+.artist-spotify:hover {
+  color: #1DB954;
+  border-color: #1DB954;
+  gap: 0.75rem;
+}
+.artist-spotify svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+/* ── SERVICES ── */
+#services { background: rgba(249,249,249,0.62); backdrop-filter: blur(10px); }
+
+.services-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.services-intro-text {
+  font-family: var(--serif);
+  font-size: 1.45rem;
+  font-weight: 300;
+  line-height: 1.55;
+  color: var(--ink);
+  margin-bottom: 2rem;
+}
+
+.services-note {
+  font-size: 0.82rem;
+  color: var(--ink-muted);
+  line-height: 1.8;
+  max-width: 38ch;
+}
+
+.services-list { display: flex; flex-direction: column; }
+
+.service-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding: 1.6rem 0;
+  border-bottom: 0.5px solid var(--line);
+  transition: padding-left 0.3s;
+}
+.service-row:first-child { border-top: 0.5px solid var(--line); }
+.service-row:hover { padding-left: 0.6rem; }
+
+.service-n {
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+  padding-top: 0.15rem;
+  min-width: 1.8rem;
+}
+
+.service-body h3 {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin-bottom: 0.3rem;
+}
+
+.service-body p {
+  font-size: 0.78rem;
+  color: var(--ink-muted);
+  line-height: 1.65;
+}
+
+/* ── CONTACT ── */
+#contact {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+#contact .section-header { border-top-color: rgba(247,245,240,0.1); }
+#contact .section-num  { color: rgba(247,245,240,0.25); }
+#contact .section-title { color: var(--paper); }
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: start;
+}
+
+.contact-tagline {
+  font-family: var(--serif);
+  font-size: clamp(1.9rem, 3.5vw, 3.2rem);
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+.contact-tagline em {
+  font-style: italic;
+  color: rgba(247,245,240,0.35);
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  margin-top: 3.5rem;
+}
+
+.contact-block label {
+  display: block;
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(247,245,240,0.3);
+  margin-bottom: 0.4rem;
+}
+
+.contact-block a,
+.contact-block p {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: var(--paper);
+  text-decoration: none;
+  transition: color 0.25s;
+}
+.contact-block a:hover { color: rgba(247,245,240,0.55); }
+
+.contact-form { display: flex; flex-direction: column; }
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  padding: 1.15rem 0;
+  border-bottom: 0.5px solid rgba(247,245,240,0.1);
+}
+.form-field:first-child { border-top: 0.5px solid rgba(247,245,240,0.1); }
+
+.form-field label {
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(247,245,240,0.28);
+  margin-bottom: 0.35rem;
+}
+
+.form-field input,
+.form-field textarea,
+.form-field select {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--paper);
+  font-family: var(--sans);
+  font-size: 0.88rem;
+  font-weight: 300;
+  line-height: 1.5;
+  resize: none;
+  width: 100%;
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder { color: rgba(247,245,240,0.2); }
+.form-field select option { background: #1a1a1a; color: var(--paper); }
+
+.form-submit {
+  margin-top: 2rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  background: transparent;
+  border: 0.5px solid rgba(247,245,240,0.25);
+  color: var(--paper);
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.9rem 1.8rem;
+  cursor: pointer;
+  transition: background 0.3s, border-color 0.3s, gap 0.3s;
+}
+.form-submit:hover {
+  background: rgba(247,245,240,0.05);
+  border-color: rgba(247,245,240,0.55);
+  gap: 1.5rem;
+}
+.form-submit svg { width: 15px; height: 15px; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink);
+  color: rgba(247,245,240,0.28);
+  padding: 1.75rem 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 0.5px solid rgba(247,245,240,0.07);
+}
+
+.footer-logo {
+  font-family: var(--serif);
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(247,245,240,0.38);
+  text-decoration: none;
+}
+
+.footer-copy { font-size: 0.63rem; letter-spacing: 0.07em; }
+
+/* ── GLASS CARDS ── */
+.glass-card {
+  position: relative;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,0.72), rgba(255,255,255,0.36));
+  backdrop-filter: blur(26px) saturate(140%);
+  -webkit-backdrop-filter: blur(26px) saturate(140%);
+  border: 0.5px solid rgba(255,255,255,0.88);
+  border-radius: 12px;
+  box-shadow:
+    0 22px 55px rgba(14,14,14,0.12),
+    0 6px 18px rgba(14,14,14,0.07),
+    inset 0 1px 0 rgba(255,255,255,0.95);
+  padding: 2rem 2.5rem;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.glass-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background:
+    linear-gradient(90deg, rgba(255,255,255,0.65), transparent 22%, transparent 78%, rgba(255,255,255,0.42)),
+    linear-gradient(180deg, rgba(255,255,255,0.72), transparent 34%, transparent 72%, rgba(0,0,0,0.035));
+}
+
+.glass-card::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  pointer-events: none;
+  border-radius: inherit;
+  border: 0.5px solid rgba(255,255,255,0.42);
+}
+
+.glass-card-dark {
+  position: relative;
+  background:
+    linear-gradient(145deg, rgba(14,14,14,0.62), rgba(14,14,14,0.36));
+  backdrop-filter: blur(26px) saturate(140%);
+  -webkit-backdrop-filter: blur(26px) saturate(140%);
+  border: 0.5px solid rgba(255,255,255,0.14);
+  border-radius: 12px;
+  box-shadow:
+    0 24px 60px rgba(0,0,0,0.26),
+    0 7px 20px rgba(0,0,0,0.18),
+    inset 0 1px 0 rgba(255,255,255,0.12);
+  padding: 2rem 2.5rem;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.glass-card-dark::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background:
+    linear-gradient(90deg, rgba(255,255,255,0.08), transparent 22%, transparent 78%, rgba(255,255,255,0.05)),
+    linear-gradient(180deg, rgba(255,255,255,0.07), transparent 35%, transparent 72%, rgba(0,0,0,0.13));
+}
+
+.glass-card-dark::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  pointer-events: none;
+  border-radius: inherit;
+  border: 0.5px solid rgba(255,255,255,0.08);
+}
+
+.glass-card > *,
+.glass-card-dark > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.75s ease, transform 0.75s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  nav { padding: 1.1rem 1.5rem; }
+  .nav-center { display: none; }
+  section { padding: 4.5rem 1.5rem; }
+  #hero { padding: 8.5rem 1.5rem 4rem; }
+  .stats-bar { grid-template-columns: 1fr; }
+  .stat-item { border-right: none; border-bottom: 0.5px solid rgba(247,245,240,0.1); padding: 1.5rem; }
+  .artists-grid { grid-template-columns: 1fr; }
+  .artist-card { border-right: none !important; }
+  .artist-card:nth-child(n) { border-bottom: 0.5px solid var(--line); }
+  .artist-card:last-child { border-bottom: none; }
+  .services-layout { grid-template-columns: 1fr; gap: 3rem; }
+  .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
+  footer { flex-direction: column; gap: 0.75rem; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">AKYURT MEDIA</a>
+  <ul class="nav-center">
+    <li><a href="#artists" data-tr="Sanatçılar" data-en="Artists">Sanatçılar</a></li>
+    <li><a href="#services" data-tr="Hizmetler" data-en="Services">Hizmetler</a></li>
+    <li><a href="#contact" data-tr="İletişim" data-en="Contact">İletişim</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('tr')">TR</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+    </div>
+    <a href="#contact" class="nav-cta" data-tr="Başvur" data-en="Apply">Başvur</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="glass-card" style="margin-bottom:2.5rem; max-width:fit-content; opacity:0; animation: fadeUp 1s ease 0.4s forwards;">
+  <h1 class="hero-headline" style="opacity:1; animation:none;">
+    <span data-tr='Müziğinizi tüm <em>dünyaya</em> duyuruyoruz.' data-en='We make your music <em>heard</em> around the world.'>
+      Müziğinizi tüm <em>dünyaya</em> duyuruyoruz.
+    </span>
+  </h1>
+  </div>
+
+  <div class="hero-bottom" style="opacity:0; animation: fadeUp 1s ease 0.7s forwards;">
+    <div class="glass-card" style="padding:1.5rem 2rem;">
+    <p class="hero-desc"
+       data-tr="Bağımsız sanatçıları ve plak şirketlerini küresel müzik pazarıyla buluşturan bir yapı. Prodüksiyondan yayına, dijital dağıtımdan hak korumasına kadar her adımda yanınızdayız."
+       data-en="A structure connecting independent artists and record labels with the global music market. We are with you at every step — from production to release, from digital distribution to rights protection.">
+      Bağımsız sanatçıları ve plak şirketlerini küresel müzik pazarıyla buluşturan bir yapı. Prodüksiyondan yayına, dijital dağıtımdan hak korumasına kadar her adımda yanınızdayız.
+    </p>
+    </div>
+    <a href="#services" class="hero-cta glass-card" style="padding:1rem 1.5rem; align-items:center;">
+      <span data-tr="Hizmetlerimiz" data-en="Our services">Hizmetlerimiz</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <p class="stat-num">180+</p>
+    <p class="stat-label" data-tr="Sanatçı" data-en="Artists">Sanatçı</p>
+  </div>
+  <div class="stat-item">
+    <p class="stat-num">800+</p>
+    <p class="stat-label" data-tr="Dağıtılmış Şarkı &amp; Albüm" data-en="Distributed Tracks &amp; Albums">Dağıtılmış Şarkı &amp; Albüm</p>
+  </div>
+  <div class="stat-item">
+    <p class="stat-num">200K €</p>
+    <p class="stat-label" data-tr="Dağıtılan Gelir" data-en="Distributed Revenue">Dağıtılan Gelir</p>
+  </div>
+</div>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap" aria-hidden="true">
+  <div class="marquee-inner" id="marqueeInner">
+    <!-- filled by JS -->
+  </div>
+</div>
+
+<!-- ARTISTS -->
+<section id="artists">
+  <div class="section-header reveal">
+    <span class="section-num">01</span>
+    <h2 class="section-title" data-tr="Sanatçılarımız" data-en="Our Artists">Sanatçılarımız</h2>
+  </div>
+
+  <div class="artists-grid">
+
+    <div class="artist-card reveal" style="transition-delay:0s">
+      <p class="artist-index">AM — 001</p>
+      <h3 class="artist-name">Shremn</h3>
+      <p class="artist-genre">Funk · R&amp;B · Soul</p>
+      <a class="artist-spotify"
+         href="https://open.spotify.com/artist/1T5ubwYMnwVcJVZ03lmm32"
+         target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424a.623.623 0 01-.857.208c-2.348-1.435-5.304-1.76-8.785-.964a.623.623 0 01-.277-1.215c3.809-.87 7.077-.496 9.712 1.115a.623.623 0 01.207.856zm1.223-2.723a.78.78 0 01-1.072.257c-2.687-1.652-6.785-2.131-9.965-1.166a.78.78 0 01-.973-.519.781.781 0 01.52-.973c3.632-1.102 8.147-.568 11.233 1.329a.78.78 0 01.257 1.072zm.105-2.835C14.692 9.01 9.375 8.833 6.297 9.76a.937.937 0 11-.543-1.793c3.532-1.072 9.404-.866 13.115 1.337a.937.937 0 01-.955 1.562z"/></svg>
+        <span data-tr="Spotify'da Dinle" data-en="Listen on Spotify">Spotify'da Dinle</span>
+      </a>
+    </div>
+
+    <div class="artist-card reveal" style="transition-delay:0.08s">
+      <p class="artist-index">AM — 002</p>
+      <h3 class="artist-name">AKYURT</h3>
+      <p class="artist-genre">Hip-Hop · Rap · Electronic</p>
+      <a class="artist-spotify"
+         href="https://open.spotify.com/artist/7nVNsW3vF6uaeQknwWmdS0"
+         target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424a.623.623 0 01-.857.208c-2.348-1.435-5.304-1.76-8.785-.964a.623.623 0 01-.277-1.215c3.809-.87 7.077-.496 9.712 1.115a.623.623 0 01.207.856zm1.223-2.723a.78.78 0 01-1.072.257c-2.687-1.652-6.785-2.131-9.965-1.166a.78.78 0 01-.973-.519.781.781 0 01.52-.973c3.632-1.102 8.147-.568 11.233 1.329a.78.78 0 01.257 1.072zm.105-2.835C14.692 9.01 9.375 8.833 6.297 9.76a.937.937 0 11-.543-1.793c3.532-1.072 9.404-.866 13.115 1.337a.937.937 0 01-.955 1.562z"/></svg>
+        <span data-tr="Spotify'da Dinle" data-en="Listen on Spotify">Spotify'da Dinle</span>
+      </a>
+    </div>
+
+    <div class="artist-card reveal" style="transition-delay:0.16s">
+      <p class="artist-index">AM — 003</p>
+      <h3 class="artist-name">ENBYAENGN</h3>
+      <p class="artist-genre">EDM</p>
+      <a class="artist-spotify"
+         href="https://open.spotify.com/artist/6LmdvQPvEtiNbywrg4dP25"
+         target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424a.623.623 0 01-.857.208c-2.348-1.435-5.304-1.76-8.785-.964a.623.623 0 01-.277-1.215c3.809-.87 7.077-.496 9.712 1.115a.623.623 0 01.207.856zm1.223-2.723a.78.78 0 01-1.072.257c-2.687-1.652-6.785-2.131-9.965-1.166a.78.78 0 01-.973-.519.781.781 0 01.52-.973c3.632-1.102 8.147-.568 11.233 1.329a.78.78 0 01.257 1.072zm.105-2.835C14.692 9.01 9.375 8.833 6.297 9.76a.937.937 0 11-.543-1.793c3.532-1.072 9.404-.866 13.115 1.337a.937.937 0 01-.955 1.562z"/></svg>
+        <span data-tr="Spotify'da Dinle" data-en="Listen on Spotify">Spotify'da Dinle</span>
+      </a>
+    </div>
+
+    <div class="artist-card reveal" style="transition-delay:0.04s">
+      <p class="artist-index">AM — 004</p>
+      <h3 class="artist-name">Tayroa</h3>
+      <p class="artist-genre">EDM · Electronic</p>
+      <a class="artist-spotify"
+         href="https://open.spotify.com/artist/54Vfzx2bqSqFi3CGlAjBKx"
+         target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424a.623.623 0 01-.857.208c-2.348-1.435-5.304-1.76-8.785-.964a.623.623 0 01-.277-1.215c3.809-.87 7.077-.496 9.712 1.115a.623.623 0 01.207.856zm1.223-2.723a.78.78 0 01-1.072.257c-2.687-1.652-6.785-2.131-9.965-1.166a.78.78 0 01-.973-.519.781.781 0 01.52-.973c3.632-1.102 8.147-.568 11.233 1.329a.78.78 0 01.257 1.072zm.105-2.835C14.692 9.01 9.375 8.833 6.297 9.76a.937.937 0 11-.543-1.793c3.532-1.072 9.404-.866 13.115 1.337a.937.937 0 01-.955 1.562z"/></svg>
+        <span data-tr="Spotify'da Dinle" data-en="Listen on Spotify">Spotify'da Dinle</span>
+      </a>
+    </div>
+
+    <div class="artist-card reveal" style="transition-delay:0.12s">
+      <p class="artist-index">AM — 005</p>
+      <h3 class="artist-name">Metukan</h3>
+      <p class="artist-genre">Hip-Hop · Rap</p>
+      <a class="artist-spotify"
+         href="https://open.spotify.com/artist/3SdGkpzAA98IJUf7dwd8TD"
+         target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424a.623.623 0 01-.857.208c-2.348-1.435-5.304-1.76-8.785-.964a.623.623 0 01-.277-1.215c3.809-.87 7.077-.496 9.712 1.115a.623.623 0 01.207.856zm1.223-2.723a.78.78 0 01-1.072.257c-2.687-1.652-6.785-2.131-9.965-1.166a.78.78 0 01-.973-.519.781.781 0 01.52-.973c3.632-1.102 8.147-.568 11.233 1.329a.78.78 0 01.257 1.072zm.105-2.835C14.692 9.01 9.375 8.833 6.297 9.76a.937.937 0 11-.543-1.793c3.532-1.072 9.404-.866 13.115 1.337a.937.937 0 01-.955 1.562z"/></svg>
+        <span data-tr="Spotify'da Dinle" data-en="Listen on Spotify">Spotify'da Dinle</span>
+      </a>
+    </div>
+
+    <div class="artist-card reveal" style="transition-delay:0.2s">
+      <p class="artist-index">AM — 006</p>
+      <h3 class="artist-name">aliex</h3>
+      <p class="artist-genre">Hip-Hop · Rap</p>
+      <a class="artist-spotify"
+         href="https://open.spotify.com/artist/4zDIVawcy6QodUWZ57JgPP"
+         target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424a.623.623 0 01-.857.208c-2.348-1.435-5.304-1.76-8.785-.964a.623.623 0 01-.277-1.215c3.809-.87 7.077-.496 9.712 1.115a.623.623 0 01.207.856zm1.223-2.723a.78.78 0 01-1.072.257c-2.687-1.652-6.785-2.131-9.965-1.166a.78.78 0 01-.973-.519.781.781 0 01.52-.973c3.632-1.102 8.147-.568 11.233 1.329a.78.78 0 01.257 1.072zm.105-2.835C14.692 9.01 9.375 8.833 6.297 9.76a.937.937 0 11-.543-1.793c3.532-1.072 9.404-.866 13.115 1.337a.937.937 0 01-.955 1.562z"/></svg>
+        <span data-tr="Spotify'da Dinle" data-en="Listen on Spotify">Spotify'da Dinle</span>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-header reveal">
+    <span class="section-num">02</span>
+    <h2 class="section-title" data-tr="Hizmetlerimiz" data-en="Services">Hizmetlerimiz</h2>
+  </div>
+
+  <div class="services-layout">
+    <div class="reveal">
+      <div class="glass-card" style="width:100%;">
+      <p class="services-intro-text"
+         data-tr="Müziğinizi en hızlı ve güvenilir şekilde bütün dünyada yayınlıyoruz."
+         data-en="We release your music across the entire world in the fastest and most reliable way.">
+        Müziğinizi en hızlı ve güvenilir şekilde bütün dünyada yayınlıyoruz.
+      </p>
+      <p class="services-note"
+         data-tr="Spotify, Apple Music, Amazon Music ve 150'den fazla platformda dijital varlığınızı yönetiyor; eserlerinizin haklarını meslek birliklerine kaydederek koruma altına alıyoruz."
+         data-en="We manage your digital presence on Spotify, Apple Music, Amazon Music and over 150 platforms, and protect your works by registering them with performing rights organisations.">
+        Spotify, Apple Music, Amazon Music ve 150'den fazla platformda dijital varlığınızı yönetiyor; eserlerinizin haklarını meslek birliklerine kaydederek koruma altına alıyoruz.
+      </p>
+      </div>
+    </div>
+
+    <div class="services-list reveal" style="transition-delay:0.12s">
+
+      <div class="service-row">
+        <span class="service-n">01</span>
+        <div class="service-body">
+          <h3 data-tr="Dijital Dağıtım" data-en="Digital Distribution">Dijital Dağıtım</h3>
+          <p data-tr="150'den fazla küresel platform. Gelir takibi ve ayrıntılı analiz paneli."
+             data-en="Over 150 global platforms. Revenue tracking and detailed analytics dashboard.">
+            150'den fazla küresel platform. Gelir takibi ve ayrıntılı analiz paneli.
+          </p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <span class="service-n">02</span>
+        <div class="service-body">
+          <h3 data-tr="Publishing &amp; Edisyon Kaydı" data-en="Publishing &amp; Edition Registration">Publishing &amp; Edisyon Kaydı</h3>
+          <p data-tr="Besteler ve sözler dahil tüm eserlerin meslek birliklerine kaydı ve sürekli takibi."
+             data-en="Registration and ongoing monitoring of all works — including compositions and lyrics — with performing rights organisations.">
+            Besteler ve sözler dahil tüm eserlerin meslek birliklerine kaydı ve sürekli takibi.
+          </p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <span class="service-n">03</span>
+        <div class="service-body">
+          <h3 data-tr="Hak Koruması" data-en="Rights Protection">Hak Koruması</h3>
+          <p data-tr="Albüm kapaklarından bestelere, sözlerden master kayıtlara kadar tüm telif hakları güvence altında."
+             data-en="All copyrights are secured — from album artwork to compositions, lyrics to master recordings.">
+            Albüm kapaklarından bestelere, sözlerden master kayıtlara kadar tüm telif hakları güvence altında.
+          </p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <span class="service-n">04</span>
+        <div class="service-body">
+          <h3 data-tr="Komşu Hakları Yönetimi" data-en="Neighbouring Rights Management">Komşu Hakları Yönetimi</h3>
+          <p data-tr="Yayın ve performans gelirlerinden daha fazla kazanma imkânı. Eksiksiz komşu hakları takibi."
+             data-en="Earn more from broadcast and performance revenues. Comprehensive neighbouring rights monitoring.">
+            Yayın ve performans gelirlerinden daha fazla kazanma imkânı. Eksiksiz komşu hakları takibi.
+          </p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <span class="service-n">05</span>
+        <div class="service-body">
+          <h3 data-tr="Ayrıntılı Analiz &amp; Veri Takibi" data-en="In-Depth Analytics &amp; Data Tracking">Ayrıntılı Analiz &amp; Veri Takibi</h3>
+          <p data-tr="Dinlenme verileri, coğrafi dağılım ve gelir raporları. Veriye dayalı kararlar alın."
+             data-en="Stream data, geographic breakdown and revenue reports. Make data-driven decisions.">
+            Dinlenme verileri, coğrafi dağılım ve gelir raporları. Veriye dayalı kararlar alın.
+          </p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <span class="service-n">06</span>
+        <div class="service-body">
+          <h3 data-tr="Lisanslama &amp; Sync" data-en="Licensing &amp; Sync">Lisanslama &amp; Sync</h3>
+          <p data-tr="Film, reklam ve TV projeleri için müzik lisanslaması. Telif yönetimi ve koordinasyon."
+             data-en="Music licensing for film, advertising and TV projects. Royalty management and coordination.">
+            Film, reklam ve TV projeleri için müzik lisanslaması. Telif yönetimi ve koordinasyon.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header reveal">
+    <span class="section-num">03</span>
+    <h2 class="section-title" data-tr="Konuşalım" data-en="Let's Talk">Konuşalım</h2>
+  </div>
+
+  <div class="contact-layout">
+    <div class="reveal">
+      <div class="glass-card-dark" style="width:100%;">
+      <p class="contact-tagline"
+         data-tr='Müziğiniz için <em>doğru ortak</em> arıyorsanız buradayız.'
+         data-en='If you are looking for the <em>right partner</em> for your music, we are here.'>
+        Müziğiniz için <em>doğru ortak</em> arıyorsanız buradayız.
+      </p>
+      <div class="contact-details">
+        <div class="contact-block">
+          <label data-tr="E-posta" data-en="Email">E-posta</label>
+          <a href="mailto:info@akyurtmedia.com">info@akyurtmedia.com</a>
+        </div>
+        <div class="contact-block">
+          <label data-tr="Telefon" data-en="Phone">Telefon</label>
+          <a href="tel:+905525249166">+90 552 524 91 66</a>
+        </div>
+        <div class="contact-block">
+          <label data-tr="Konum" data-en="Location">Konum</label>
+          <p>Sakarya, Türkiye</p>
+        </div>
+      </div>
+      </div>
+    </div>
+
+    <div class="reveal" style="transition-delay:0.14s">
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <div class="form-field">
+          <label data-tr="Adınız" data-en="Your name">Adınız</label>
+          <input type="text" data-placeholder-tr="Ad Soyad" data-placeholder-en="Full name" placeholder="Ad Soyad" required>
+        </div>
+        <div class="form-field">
+          <label data-tr="E-posta" data-en="Email">E-posta</label>
+          <input type="email" data-placeholder-tr="ornek@email.com" data-placeholder-en="example@email.com" placeholder="ornek@email.com" required>
+        </div>
+        <div class="form-field">
+          <label data-tr="Konu" data-en="Subject">Konu</label>
+          <select>
+            <option value="" data-tr="Seçiniz..." data-en="Select...">Seçiniz...</option>
+            <option data-tr="Dağıtım Başvurusu" data-en="Distribution Application">Dağıtım Başvurusu</option>
+            <option data-tr="Sanatçı Başvurusu" data-en="Artist Application">Sanatçı Başvurusu</option>
+            <option data-tr="Publishing &amp; Hak Koruması" data-en="Publishing &amp; Rights Protection">Publishing &amp; Hak Koruması</option>
+            <option data-tr="Lisanslama" data-en="Licensing">Lisanslama</option>
+            <option data-tr="Genel Bilgi" data-en="General Inquiry">Genel Bilgi</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label data-tr="Mesajınız" data-en="Your message">Mesajınız</label>
+          <textarea rows="4" data-placeholder-tr="Projenizi kısaca anlatın..." data-placeholder-en="Tell us about your project..." placeholder="Projenizi kısaca anlatın..."></textarea>
+        </div>
+        <button type="submit" class="form-submit" id="submitBtn">
+          <span data-tr="Gönder" data-en="Send">Gönder</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#hero" class="footer-logo">AKYURT MEDIA</a>
+  <p class="footer-copy" data-tr="© 2025 Akyurt Media. Tüm hakları saklıdır." data-en="© 2025 Akyurt Media. All rights reserved.">
+    © 2025 Akyurt Media. Tüm hakları saklıdır.
+  </p>
+</footer>
+
+<script>
+/* ── LANGUAGE ── */
+let currentLang = 'tr';
+
+const marqueeItems = {
+  tr: ['Dijital Dağıtım','Publishing','Edisyon Kaydı','Hak Koruması','Komşu Hakları','Analiz & Veri','Lisanslama','Sync','Akyurt Media'],
+  en: ['Digital Distribution','Publishing','Edition Registration','Rights Protection','Neighbouring Rights','Analytics & Data','Licensing','Sync','Akyurt Media']
+};
+
+function buildMarquee(lang) {
+  const items = marqueeItems[lang];
+  const doubled = [...items, ...items];
+  return doubled.map(t =>
+    `<span class="marquee-item">${t}</span><span class="marquee-dot">·</span>`
+  ).join('');
+}
+
+function setLang(lang) {
+  currentLang = lang;
+
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    b.classList.toggle('active', b.textContent === lang.toUpperCase());
+  });
+
+  document.querySelectorAll('[data-tr]').forEach(el => {
+    const val = el.getAttribute('data-' + lang);
+    if (!val) return;
+    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') return;
+    if (el.tagName === 'OPTION') { el.textContent = val; return; }
+    el.innerHTML = val;
+  });
+
+  // placeholders
+  document.querySelectorAll('[data-placeholder-' + lang + ']').forEach(el => {
+    el.placeholder = el.getAttribute('data-placeholder-' + lang);
+  });
+
+  // nav links
+  document.querySelectorAll('.nav-center a[data-tr]').forEach(a => {
+    a.textContent = a.getAttribute('data-' + lang);
+  });
+
+  // marquee
+  document.getElementById('marqueeInner').innerHTML = buildMarquee(lang);
+
+  // html lang attr
+  document.documentElement.lang = lang;
+}
+
+// init marquee
+document.getElementById('marqueeInner').innerHTML = buildMarquee('tr');
+
+/* ── SCROLL REVEAL ── */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* ── PARALLAX HERO BG ── */
+const heroBg = document.querySelector('.hero-bg-text');
+window.addEventListener('scroll', () => {
+  if (heroBg) {
+    heroBg.style.transform =
+      `translate(-50%, calc(-50% + ${window.scrollY * 0.14}px))`;
+  }
+}, { passive: true });
+
+/* ── FORM SUBMIT ── */
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  const span = btn.querySelector('span');
+  span.textContent = currentLang === 'tr' ? 'Gönderildi' : 'Sent';
+  btn.querySelector('svg').innerHTML = '<path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/>';
+  setTimeout(() => {
+    span.textContent = currentLang === 'tr' ? 'Gönder' : 'Send';
+    btn.querySelector('svg').innerHTML = '<path d="M5 12h14M13 6l6 6-6 6"/>';
+  }, 3000);
+}
+</script>
+</body>
+</html>
