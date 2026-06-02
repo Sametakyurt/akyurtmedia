@@ -40,7 +40,7 @@
   },
   "contactPoint": {
     "@type": "ContactPoint",
-    "email": "info@akyurtmedia.com",
+    "email": "akyurtmedia@gmail.com",
     "telephone": "+905525249166",
     "contactType": "customer service"
   },
@@ -884,6 +884,224 @@ body::before {
   .service-row { padding: 1.4rem 0; }
   .lang-toggle { margin-right: 0.5rem; }
 }
+
+/* ── IMPROVED CONTACT FORM ── */
+.form-field label {
+  color: rgba(247,245,240,0.72);
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+}
+
+.form-field input,
+.form-field textarea,
+.form-field select {
+  color: rgba(247,245,240,0.96);
+  font-size: 0.92rem;
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+  color: rgba(247,245,240,0.38);
+}
+
+.form-field select {
+  cursor: pointer;
+}
+
+.optional-badge {
+  font-size: 0.55rem;
+  letter-spacing: 0.08em;
+  color: rgba(247,245,240,0.42);
+  text-transform: none;
+  margin-left: 0.45rem;
+}
+
+.conditional-group {
+  display: none;
+  margin-top: 1rem;
+  padding: 1rem 1.1rem;
+  border: 0.5px solid rgba(247,245,240,0.12);
+  border-radius: 12px;
+  background: rgba(247,245,240,0.04);
+}
+
+.conditional-group.active {
+  display: block;
+  animation: fadeUp 0.25s ease forwards;
+}
+
+.conditional-title {
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(247,245,240,0.72);
+  margin-bottom: 0.9rem;
+}
+
+.choice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 0.6rem 0 1rem;
+}
+
+.choice-card {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.8rem 0.9rem;
+  border: 0.5px solid rgba(247,245,240,0.16);
+  border-radius: 10px;
+  color: rgba(247,245,240,0.88);
+  font-size: 0.82rem;
+  cursor: pointer;
+  background: rgba(247,245,240,0.03);
+}
+
+.choice-card input {
+  width: auto;
+  accent-color: #f7f5f0;
+}
+
+.sub-field {
+  display: none;
+}
+
+.sub-field.active {
+  display: flex;
+}
+
+.form-message {
+  margin-top: 1.4rem;
+  padding: 1rem 1.2rem;
+  border: 0.5px solid rgba(247,245,240,0.18);
+  background: rgba(247,245,240,0.06);
+  color: var(--paper);
+  font-size: 0.82rem;
+  line-height: 1.6;
+  border-radius: 10px;
+  display: none;
+  animation: fadeUp 0.35s ease forwards;
+}
+
+.form-message.info,
+.form-message.success,
+.form-message.error {
+  display: block;
+}
+
+.form-message.info {
+  border-color: rgba(247,245,240,0.26);
+}
+
+.form-message.success {
+  border-color: rgba(74,222,128,0.45);
+  background: rgba(74,222,128,0.08);
+}
+
+.form-message.error {
+  border-color: rgba(239,68,68,0.45);
+  background: rgba(239,68,68,0.08);
+}
+
+.form-message strong {
+  display: block;
+  margin-bottom: 0.2rem;
+  font-weight: 500;
+}
+
+.hidden-field {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  opacity: 0 !important;
+}
+
+.form-submit {
+  width: 25%;
+  min-width: 150px;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .choice-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-submit {
+    width: 100%;
+  }
+}
+
+
+/* ── CLEAN CONDITIONAL FORM OVERRIDES ── */
+.conditional-group {
+  display: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+}
+.conditional-group.active {
+  display: block;
+  animation: fadeUp 0.25s ease forwards;
+}
+.conditional-title {
+  display: none;
+}
+.inline-check {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 0.7rem;
+  color: rgba(247,245,240,0.66);
+  font-size: 0.76rem;
+  cursor: pointer;
+}
+.inline-check input {
+  width: auto;
+  accent-color: #f7f5f0;
+}
+.form-field label {
+  color: rgba(247,245,240,0.78);
+  font-size: 0.68rem;
+  font-weight: 500;
+}
+.form-field input,
+.form-field textarea,
+.form-field select {
+  font-size: 0.94rem;
+}
+.sub-field {
+  display: none;
+}
+.sub-field.active {
+  display: flex;
+}
+.footer-social a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
+}
+.social-icon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+.form-submit {
+  width: 25%;
+  min-width: 150px;
+  justify-content: center;
+}
+@media (max-width: 768px) {
+  .form-submit {
+    width: 100%;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -954,7 +1172,7 @@ body::before {
     <p class="stat-label" data-tr="Dağıtılmış Şarkı &amp; Albüm" data-en="Distributed Tracks &amp; Albums">Dağıtılmış Şarkı &amp; Albüm</p>
   </div>
   <div class="stat-item">
-    <p class="stat-num" data-target="200" data-prefix="" data-suffix="K €">200K €</p>
+    <p class="stat-num" data-target="200" data-prefix="" data-suffix="K $">200K $</p>
     <p class="stat-label" data-tr="Dağıtılan Gelir" data-en="Distributed Revenue">Dağıtılan Gelir</p>
   </div>
 </div>
@@ -1163,7 +1381,7 @@ body::before {
       <div class="contact-details">
         <div class="contact-block">
           <label data-tr="E-posta" data-en="Email">E-posta</label>
-          <a href="mailto:info@akyurtmedia.com">info@akyurtmedia.com</a>
+          <a href="mailto:akyurtmedia@gmail.com">akyurtmedia@gmail.com</a>
         </div>
         <div class="contact-block">
           <label data-tr="Telefon" data-en="Phone">Telefon</label>
@@ -1178,35 +1396,137 @@ body::before {
     </div>
 
     <div class="reveal" style="transition-delay:0.14s">
-      <form class="contact-form" onsubmit="handleSubmit(event)">
+      <form class="contact-form" id="contactForm" novalidate>
+        <input type="hidden" name="access_key" value="19b5a31b-8697-409b-acf2-9ff2b9a3fce6">
+        <input type="hidden" name="from_name" value="Akyurt Media Website">
+        <input type="hidden" name="subject" value="Akyurt Media Website Contact Form">
+        <input type="checkbox" name="botcheck" class="hidden-field" tabindex="-1" autocomplete="off">
+
         <div class="form-field">
-          <label data-tr="Adınız" data-en="Your name">Adınız</label>
-          <input type="text" data-placeholder-tr="Ad Soyad" data-placeholder-en="Full name" placeholder="Ad Soyad" required>
+          <label data-tr="Ad Soyad" data-en="Full Name">Ad Soyad</label>
+          <input type="text" name="name" data-placeholder-tr="Adınız ve soyadınız" data-placeholder-en="Your full name" placeholder="Adınız ve soyadınız" required autocomplete="name">
         </div>
+
         <div class="form-field">
           <label data-tr="E-posta" data-en="Email">E-posta</label>
-          <input type="email" data-placeholder-tr="ornek@email.com" data-placeholder-en="example@email.com" placeholder="ornek@email.com" required>
+          <input type="email" name="email" data-placeholder-tr="ornek@email.com" data-placeholder-en="example@email.com" placeholder="ornek@email.com" required autocomplete="email">
         </div>
+
         <div class="form-field">
           <label data-tr="Konu" data-en="Subject">Konu</label>
-          <select>
+          <select name="request_type" id="requestType" required>
             <option value="" data-tr="Seçiniz..." data-en="Select...">Seçiniz...</option>
-            <option data-tr="Dağıtım Başvurusu" data-en="Distribution Application">Dağıtım Başvurusu</option>
-            <option data-tr="Sanatçı Başvurusu" data-en="Artist Application">Sanatçı Başvurusu</option>
-            <option data-tr="Publishing &amp; Hak Koruması" data-en="Publishing &amp; Rights Protection">Publishing &amp; Hak Koruması</option>
-            <option data-tr="Lisanslama" data-en="Licensing">Lisanslama</option>
-            <option data-tr="Genel Bilgi" data-en="General Inquiry">Genel Bilgi</option>
+            <option value="Label Başvurusu" data-tr="Label Başvurusu" data-en="Label Application">Label Başvurusu</option>
+            <option value="Sanatçı Başvurusu" data-tr="Sanatçı Başvurusu" data-en="Artist Application">Sanatçı Başvurusu</option>
+            <option value="Publishing & Hak Koruması" data-tr="Publishing &amp; Hak Koruması" data-en="Publishing &amp; Rights Protection">Publishing &amp; Hak Koruması</option>
+            <option value="Lisanslama" data-tr="Lisanslama" data-en="Licensing">Lisanslama</option>
+            <option value="Genel Bilgi" data-tr="Genel Bilgi" data-en="General Inquiry">Genel Bilgi</option>
           </select>
         </div>
+
+        <div class="form-field">
+          <label>
+            <span data-tr="Sosyal Medya Linkleri" data-en="Social Media Links">Sosyal Medya Linkleri</span>
+            <span class="optional-badge" id="socialOptionalBadge" data-tr="zorunlu değil" data-en="optional">zorunlu değil</span>
+          </label>
+          <input type="text" name="social_links" id="socialLinks" data-placeholder-tr="Instagram, TikTok, YouTube vb. linkler" data-placeholder-en="Instagram, TikTok, YouTube etc. links" placeholder="Instagram, TikTok, YouTube vb. linkler">
+          <label class="inline-check" id="noSocialWrapper">
+            <input type="checkbox" name="no_social_links" id="noSocialLinks" value="Yok">
+            <span data-tr="Yok" data-en="None">Yok</span>
+          </label>
+        </div>
+
+        <div class="form-field">
+          <label>
+            <span data-tr="Web Sitesi" data-en="Website">Web Sitesi</span>
+            <span class="optional-badge" data-tr="zorunlu değil" data-en="optional">zorunlu değil</span>
+          </label>
+          <input type="url" name="website" data-placeholder-tr="https://ornek.com" data-placeholder-en="https://example.com" placeholder="https://ornek.com">
+        </div>
+
+        <div class="conditional-group" data-topic="Sanatçı Başvurusu" id="artistFields">
+          <div class="form-field">
+            <label data-tr="Sanatçı profiliniz var mı?" data-en="Do you have an artist profile?">Sanatçı profiliniz var mı?</label>
+            <select name="has_artist_profile" id="hasArtistProfile">
+              <option value="" data-tr="Seçiniz..." data-en="Select...">Seçiniz...</option>
+              <option value="Evet" data-tr="Evet, sanatçı profilim var" data-en="Yes, I have an artist profile">Evet, sanatçı profilim var</option>
+              <option value="Hayır" data-tr="Hayır, henüz yok" data-en="No, not yet">Hayır, henüz yok</option>
+            </select>
+          </div>
+
+          <div class="form-field sub-field" id="artistPlatformField">
+            <label data-tr="Profil Platformu" data-en="Profile Platform">Profil Platformu</label>
+            <select name="artist_profile_platform" id="artistProfilePlatform">
+              <option value="" data-tr="Seçiniz..." data-en="Select...">Seçiniz...</option>
+              <option value="Spotify">Spotify</option>
+              <option value="YouTube">YouTube</option>
+              <option value="Apple Music">Apple Music</option>
+            </select>
+          </div>
+
+          <div class="form-field sub-field" id="artistProfileLinkField">
+            <label data-tr="Sanatçı Profil Linki" data-en="Artist Profile Link">Sanatçı Profil Linki</label>
+            <input type="url" name="artist_profile_link" data-placeholder-tr="Seçtiğiniz platformdaki sanatçı profil linki" data-placeholder-en="Artist profile link on the selected platform" placeholder="Seçtiğiniz platformdaki sanatçı profil linki">
+          </div>
+        </div>
+
+        <div class="conditional-group" data-topic="Label Başvurusu" id="labelFields">
+          <div class="form-field">
+            <label data-tr="Katalog Boyutu" data-en="Catalog Size">Katalog Boyutu</label>
+            <input type="text" name="catalog_size" inputmode="numeric" data-number-only="true" data-placeholder-tr="Örn. 250" data-placeholder-en="E.g. 250" placeholder="Örn. 250">
+          </div>
+
+          <div class="form-field">
+            <label data-tr="Sanatçı Sayısı" data-en="Number of Artists">Sanatçı Sayısı</label>
+            <input type="text" name="artist_count" inputmode="numeric" data-number-only="true" data-placeholder-tr="Örn. 40" data-placeholder-en="E.g. 40" placeholder="Örn. 40">
+          </div>
+
+          <div class="form-field">
+            <label data-tr="Aylık Tahmini Gelir" data-en="Estimated Monthly Revenue">Aylık Tahmini Gelir</label>
+            <input type="text" name="monthly_revenue" inputmode="numeric" data-number-only="true" data-placeholder-tr="Sadece rakam girin. Örn. 10000" data-placeholder-en="Numbers only. E.g. 10000" placeholder="Sadece rakam girin. Örn. 10000">
+          </div>
+        </div>
+
+        <div class="conditional-group" data-topic="Publishing & Hak Koruması" id="publishingFields">
+          <div class="form-field">
+            <label data-tr="Daha önce bir meslek birliğiyle çalıştınız mı?" data-en="Have you worked with a collecting society before?">Daha önce bir meslek birliğiyle çalıştınız mı?</label>
+            <select name="worked_with_society" id="workedWithSociety">
+              <option value="" data-tr="Seçiniz..." data-en="Select...">Seçiniz...</option>
+              <option value="Evet" data-tr="Evet" data-en="Yes">Evet</option>
+              <option value="Hayır" data-tr="Hayır" data-en="No">Hayır</option>
+            </select>
+          </div>
+
+          <div class="form-field sub-field" id="societyNameField">
+            <label data-tr="Meslek Birliği Adı" data-en="Collecting Society Name">Meslek Birliği Adı</label>
+            <input type="text" name="society_name" data-placeholder-tr="Örn. MESAM, MSG, BMI, ASCAP" data-placeholder-en="E.g. MESAM, MSG, BMI, ASCAP" placeholder="Örn. MESAM, MSG, BMI, ASCAP">
+          </div>
+
+          <div class="form-field">
+            <label data-tr="Publishing hizmetine eklenecek eser sayısı" data-en="Number of works for publishing service">Publishing hizmetine eklenecek eser sayısı</label>
+            <input type="text" name="publishing_work_count" inputmode="numeric" data-number-only="true" data-placeholder-tr="Sadece rakam girin" data-placeholder-en="Numbers only" placeholder="Sadece rakam girin">
+          </div>
+        </div>
+
+        <div class="conditional-group" data-topic="Lisanslama" id="licensingFields">
+          <div class="form-field">
+            <label data-tr="Lisanslamak istediğiniz eser sayısı" data-en="Number of works you want to license">Lisanslamak istediğiniz eser sayısı</label>
+            <input type="text" name="licensing_work_count" inputmode="numeric" data-number-only="true" data-placeholder-tr="Sadece rakam girin" data-placeholder-en="Numbers only" placeholder="Sadece rakam girin">
+          </div>
+        </div>
+
         <div class="form-field">
           <label data-tr="Mesajınız" data-en="Your message">Mesajınız</label>
-          <textarea rows="4" data-placeholder-tr="Projenizi kısaca anlatın..." data-placeholder-en="Tell us about your project..." placeholder="Projenizi kısaca anlatın..."></textarea>
+          <textarea name="message" rows="4" data-placeholder-tr="Projenizi kısaca anlatın..." data-placeholder-en="Tell us about your project..." placeholder="Projenizi kısaca anlatın..." required></textarea>
         </div>
+
         <button type="submit" class="form-submit" id="submitBtn">
           <span data-tr="Gönder" data-en="Send">Gönder</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </button>
       </form>
+      <div id="result" class="form-message"></div>
+      <div id="result" class="form-message"></div>
     </div>
   </div>
 </section>
@@ -1215,8 +1535,15 @@ body::before {
 <footer>
   <a href="#hero" class="footer-logo">AKYURT MEDIA</a>
   <div class="footer-social">
-    <a href="https://open.spotify.com" target="_blank" rel="noopener">Spotify</a>
-    <a href="mailto:info@akyurtmedia.com">info@akyurtmedia.com</a>
+    <a href="https://open.spotify.com/user/31whekya5khf2hg35dtidzxebngi" target="_blank" rel="noopener" aria-label="Spotify">
+      <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424a.623.623 0 01-.857.208c-2.348-1.435-5.304-1.76-8.785-.964a.623.623 0 01-.277-1.215c3.809-.87 7.077-.496 9.712 1.115a.623.623 0 01.207.856zm1.223-2.723a.78.78 0 01-1.072.257c-2.687-1.652-6.785-2.131-9.965-1.166a.78.78 0 01-.973-.519.781.781 0 01.52-.973c3.632-1.102 8.147-.568 11.233 1.329a.78.78 0 01.257 1.072zm.105-2.835C14.692 9.01 9.375 8.833 6.297 9.76a.937.937 0 11-.543-1.793c3.532-1.072 9.404-.866 13.115 1.337a.937.937 0 01-.955 1.562z"/></svg>
+      Spotify
+    </a>
+    <a href="https://www.instagram.com/akyurt.official/" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"/></svg>
+      Instagram
+    </a>
+    <a href="mailto:akyurtmedia@gmail.com">akyurtmedia@gmail.com</a>
   </div>
   <p class="footer-copy" data-tr="© 2025 Akyurt Media. Tüm hakları saklıdır." data-en="© 2025 Akyurt Media. All rights reserved.">
     © 2025 Akyurt Media. Tüm hakları saklıdır.
@@ -1355,19 +1682,199 @@ function closeMobileMenu() {
 }
 
 /* ── FORM SUBMIT ── */
-function handleSubmit(e) {
-  e.preventDefault();
-  const btn = document.getElementById('submitBtn');
-  const span = btn.querySelector('span');
-  span.textContent = currentLang === 'tr' ? 'Gönderildi' : 'Sent';
-  btn.querySelector('svg').innerHTML = '<path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/>';
-  btn.style.borderColor = 'rgba(247,245,240,0.55)';
-  setTimeout(() => {
-    span.textContent = currentLang === 'tr' ? 'Gönder' : 'Send';
-    btn.querySelector('svg').innerHTML = '<path d="M5 12h14M13 6l6 6-6 6"/>';
-    btn.style.borderColor = '';
-  }, 3000);
+const form = document.getElementById("contactForm");
+const result = document.getElementById("result");
+const submitBtn = document.getElementById("submitBtn");
+const requestType = document.getElementById("requestType");
+const hasArtistProfile = document.getElementById("hasArtistProfile");
+const artistPlatformField = document.getElementById("artistPlatformField");
+const artistProfileLinkField = document.getElementById("artistProfileLinkField");
+const artistProfilePlatform = document.getElementById("artistProfilePlatform");
+const artistProfileLink = document.querySelector('[name="artist_profile_link"]');
+const workedWithSociety = document.getElementById("workedWithSociety");
+const societyNameField = document.getElementById("societyNameField");
+const societyName = document.querySelector('[name="society_name"]');
+const socialLinks = document.getElementById("socialLinks");
+const noSocialLinks = document.getElementById("noSocialLinks");
+const socialOptionalBadge = document.getElementById("socialOptionalBadge");
+
+function setRequired(el, required) {
+  if (!el) return;
+  if (required) el.setAttribute("required", "required");
+  else el.removeAttribute("required");
 }
+
+function clearRequirements(container) {
+  if (!container) return;
+  container.querySelectorAll("input, select, textarea").forEach(el => {
+    el.removeAttribute("required");
+  });
+}
+
+function updateConditionalFields() {
+  const selected = requestType ? requestType.value : "";
+
+  document.querySelectorAll(".conditional-group").forEach(group => {
+    const active = group.getAttribute("data-topic") === selected;
+    group.classList.toggle("active", active);
+    if (!active) clearRequirements(group);
+  });
+
+  const labelActive = selected === "Label Başvurusu";
+  ["catalog_size", "artist_count", "monthly_revenue"].forEach(name => {
+    setRequired(document.querySelector(`[name="${name}"]`), labelActive);
+  });
+
+  if (socialOptionalBadge) {
+    socialOptionalBadge.textContent = labelActive ? "zorunlu" : (currentLang === "tr" ? "zorunlu değil" : "optional");
+  }
+  if (noSocialLinks && noSocialLinks.checked) {
+    setRequired(socialLinks, false);
+  } else {
+    setRequired(socialLinks, labelActive);
+  }
+
+  const artistActive = selected === "Sanatçı Başvurusu";
+  setRequired(hasArtistProfile, artistActive);
+
+  const publishingActive = selected === "Publishing & Hak Koruması";
+  setRequired(workedWithSociety, publishingActive);
+  setRequired(document.querySelector('[name="publishing_work_count"]'), publishingActive);
+
+  const licensingActive = selected === "Lisanslama";
+  setRequired(document.querySelector('[name="licensing_work_count"]'), licensingActive);
+
+  updateArtistProfileField();
+  updateSocietyNameField();
+}
+
+function updateArtistProfileField() {
+  const selectedTopic = requestType ? requestType.value : "";
+  const active = selectedTopic === "Sanatçı Başvurusu" && hasArtistProfile && hasArtistProfile.value === "Evet";
+
+  if (artistPlatformField) artistPlatformField.classList.toggle("active", active);
+  if (artistProfileLinkField) artistProfileLinkField.classList.toggle("active", active);
+
+  setRequired(artistProfilePlatform, active);
+  setRequired(artistProfileLink, active);
+}
+
+function updateSocietyNameField() {
+  const selectedTopic = requestType ? requestType.value : "";
+  const active = selectedTopic === "Publishing & Hak Koruması" && workedWithSociety && workedWithSociety.value === "Evet";
+
+  if (societyNameField) societyNameField.classList.toggle("active", active);
+  setRequired(societyName, active);
+}
+
+function updateNoSocial() {
+  if (!socialLinks || !noSocialLinks) return;
+  if (noSocialLinks.checked) {
+    socialLinks.value = "";
+    socialLinks.disabled = true;
+    socialLinks.removeAttribute("required");
+  } else {
+    socialLinks.disabled = false;
+  }
+  updateConditionalFields();
+}
+
+function showFormMessage(type, title, message) {
+  if (!result) return;
+  result.className = "form-message " + type;
+  result.innerHTML = "<strong>" + title + "</strong><span>" + message + "</span>";
+}
+
+document.querySelectorAll("[data-number-only='true']").forEach(input => {
+  input.addEventListener("input", () => {
+    input.value = input.value.replace(/\D/g, "");
+  });
+});
+
+if (requestType) requestType.addEventListener("change", updateConditionalFields);
+if (hasArtistProfile) hasArtistProfile.addEventListener("change", updateArtistProfileField);
+if (workedWithSociety) workedWithSociety.addEventListener("change", updateSocietyNameField);
+if (noSocialLinks) noSocialLinks.addEventListener("change", updateNoSocial);
+
+if (form) {
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    updateConditionalFields();
+
+    const fullName = form.querySelector('[name="name"]')?.value.trim() || "";
+    const nameParts = fullName.split(/\s+/).filter(Boolean);
+    if (nameParts.length < 2) {
+      showFormMessage(
+        "error",
+        currentLang === "tr" ? "Ad soyad gerekli." : "Full name required.",
+        currentLang === "tr" ? "Lütfen tek isim değil, adınız ve soyadınızı birlikte yazın." : "Please enter both your first and last name."
+      );
+      return;
+    }
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    showFormMessage("info", currentLang === "tr" ? "Gönderiliyor..." : "Sending...", currentLang === "tr" ? "Lütfen bekleyin." : "Please wait.");
+
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.style.opacity = "0.65";
+    }
+
+    try {
+      const formData = new FormData(form);
+      const object = Object.fromEntries(formData);
+      const json = JSON.stringify(object);
+
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: json
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        showFormMessage(
+          "success",
+          currentLang === "tr" ? "Başvurunuz başarıyla alındı." : "Your application has been received.",
+          currentLang === "tr" ? "En kısa sürede sizinle iletişime geçeceğiz." : "We will contact you as soon as possible."
+        );
+        form.reset();
+        updateNoSocial();
+        updateConditionalFields();
+      } else {
+        showFormMessage(
+          "error",
+          currentLang === "tr" ? "Bir hata oluştu." : "Something went wrong.",
+          currentLang === "tr" ? "Lütfen bilgileri kontrol edip tekrar deneyin." : "Please check your information and try again."
+        );
+      }
+    } catch (error) {
+      showFormMessage(
+        "error",
+        currentLang === "tr" ? "Bağlantı hatası oluştu." : "Connection error.",
+        currentLang === "tr" ? "Lütfen tekrar deneyin." : "Please try again."
+      );
+    }
+
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.style.opacity = "";
+    }
+  });
+}
+
+updateNoSocial();
+updateConditionalFields();
+
 </script>
 </body>
 </html>
