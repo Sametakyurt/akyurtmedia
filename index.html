@@ -3,7 +3,51 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Akyurt Media — Record Label & Distribution</title>
+<title>Akyurt Media — Record Label & Dijital Dağıtım | Türkiye</title>
+<meta name="description" content="Akyurt Media, bağımsız sanatçıları ve plak şirketlerini küresel müzik pazarıyla buluşturan bir yapı. Dijital dağıtım, publishing, hak koruması ve lisanslama hizmetleri.">
+<meta name="keywords" content="müzik dağıtım, dijital dağıtım, record label, plak şirketi, publishing, müzik hakları, Spotify dağıtım, Türkiye müzik, bağımsız sanatçı">
+<meta name="author" content="Akyurt Media">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://akyurtmedia.com/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://akyurtmedia.com/">
+<meta property="og:title" content="Akyurt Media — Record Label & Dijital Dağıtım">
+<meta property="og:description" content="Bağımsız sanatçıları ve plak şirketlerini küresel müzik pazarıyla buluşturan yapı. 180+ sanatçı, 800+ eser, 150+ platform.">
+<meta property="og:image" content="https://akyurtmedia.com/og-image.jpg">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:locale:alternate" content="en_GB">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Akyurt Media — Record Label & Dijital Dağıtım">
+<meta name="twitter:description" content="Bağımsız sanatçıları ve plak şirketlerini küresel müzik pazarıyla buluşturan yapı.">
+<meta name="twitter:image" content="https://akyurtmedia.com/og-image.jpg">
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MusicGroup",
+  "name": "Akyurt Media",
+  "url": "https://akyurtmedia.com",
+  "description": "Bağımsız sanatçıları ve plak şirketlerini küresel müzik pazarıyla buluşturan dijital dağıtım ve record label şirketi.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Sakarya",
+    "addressCountry": "TR"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "info@akyurtmedia.com",
+    "telephone": "+905525249166",
+    "contactType": "customer service"
+  },
+  "sameAs": ["https://open.spotify.com"]
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -656,10 +700,170 @@ footer {
 }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
+/* ── SCROLL PROGRESS BAR ── */
+#scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  width: 0%;
+  background: var(--ink);
+  z-index: 200;
+  transition: width 0.05s linear;
+}
+
+/* ── NOISE TEXTURE OVERLAY ── */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+
+/* ── ACTIVE NAV ── */
+.nav-center a.nav-active {
+  color: var(--ink);
+  border-bottom: 0.5px solid var(--ink);
+  padding-bottom: 0.1rem;
+}
+
+/* ── HAMBURGER ── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  padding: 0.4rem;
+  background: none;
+  border: none;
+  z-index: 110;
+}
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 1px;
+  background: var(--ink);
+  transition: transform 0.3s, opacity 0.3s;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+/* ── MOBILE MENU OVERLAY ── */
+.nav-mobile-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 105;
+  background: rgba(249,249,249,0.97);
+  backdrop-filter: blur(20px);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+}
+.nav-mobile-overlay.open { display: flex; }
+.nav-mobile-overlay a {
+  font-family: var(--serif);
+  font-size: 2.2rem;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  color: var(--ink);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.4s, transform 0.4s;
+}
+.nav-mobile-overlay.open a {
+  opacity: 1;
+  transform: translateY(0);
+}
+.nav-mobile-overlay.open a:nth-child(1) { transition-delay: 0.05s; }
+.nav-mobile-overlay.open a:nth-child(2) { transition-delay: 0.1s; }
+.nav-mobile-overlay.open a:nth-child(3) { transition-delay: 0.15s; }
+.nav-mobile-overlay.open a:nth-child(4) { transition-delay: 0.2s; }
+
+/* ── HERO STAGGER ── */
+.hero-eyebrow {
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.2s forwards;
+}
+.hero-headline-wrap {
+  opacity: 0;
+  animation: fadeUp 1s ease 0.4s forwards;
+}
+
+/* ── STAT COUNTER ── */
+.stat-num {
+  font-family: var(--serif);
+  font-size: 2.8rem;
+  font-weight: 300;
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+
+/* ── SERVICE ROW enhanced ── */
+.service-row {
+  position: relative;
+  overflow: hidden;
+}
+.service-row::after {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 2px;
+  background: var(--ink);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.35s ease;
+}
+.service-row:hover::after { transform: scaleY(1); }
+
+/* ── ARTIST CARD enhanced ── */
+.artist-card {
+  cursor: default;
+}
+.artist-name {
+  transition: letter-spacing 0.35s ease;
+}
+.artist-card:hover .artist-name {
+  letter-spacing: 0.02em;
+}
+
+/* ── FORM FIELD FOCUS ── */
+.form-field:focus-within {
+  border-bottom-color: rgba(247,245,240,0.45) !important;
+}
+.form-field:focus-within label {
+  color: rgba(247,245,240,0.65) !important;
+}
+
+/* ── FOOTER SOCIAL ── */
+.footer-social {
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+}
+.footer-social a {
+  color: rgba(247,245,240,0.28);
+  text-decoration: none;
+  font-size: 0.63rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 0.25s;
+}
+.footer-social a:hover { color: rgba(247,245,240,0.7); }
+
 /* ── MOBILE ── */
 @media (max-width: 768px) {
   nav { padding: 1.1rem 1.5rem; }
   .nav-center { display: none; }
+  .nav-hamburger { display: flex; }
+  .nav-cta { display: none; }
   section { padding: 4.5rem 1.5rem; }
   #hero { padding: 8.5rem 1.5rem 4rem; }
   .stats-bar { grid-template-columns: 1fr; }
@@ -671,10 +875,27 @@ footer {
   .services-layout { grid-template-columns: 1fr; gap: 3rem; }
   .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
   footer { flex-direction: column; gap: 0.75rem; text-align: center; }
+  .footer-social { justify-content: center; }
+  .hero-bottom { flex-direction: column; gap: 1.5rem; align-items: flex-start; }
+  .hero-cta.glass-card { width: 100%; justify-content: space-between; }
+  .glass-card { padding: 1.5rem; }
+  .glass-card-dark { padding: 1.5rem; }
+  .contact-layout { gap: 2rem; }
+  .service-row { padding: 1.4rem 0; }
+  .lang-toggle { margin-right: 0.5rem; }
 }
 </style>
 </head>
 <body>
+<div id="scroll-progress"></div>
+
+<!-- MOBILE NAV OVERLAY -->
+<div class="nav-mobile-overlay" id="mobileMenu">
+  <a href="#artists" onclick="closeMobileMenu()" data-tr="Sanatçılar" data-en="Artists">Sanatçılar</a>
+  <a href="#services" onclick="closeMobileMenu()" data-tr="Hizmetler" data-en="Services">Hizmetler</a>
+  <a href="#contact" onclick="closeMobileMenu()" data-tr="İletişim" data-en="Contact">İletişim</a>
+  <a href="#contact" onclick="closeMobileMenu()" data-tr="Başvur →" data-en="Apply →">Başvur →</a>
+</div>
 
 <!-- NAV -->
 <nav>
@@ -690,12 +911,16 @@ footer {
       <button class="lang-btn" onclick="setLang('en')">EN</button>
     </div>
     <a href="#contact" class="nav-cta" data-tr="Başvur" data-en="Apply">Başvur</a>
+    <button class="nav-hamburger" id="hamburger" onclick="toggleMobileMenu()" aria-label="Menü">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
 <!-- HERO -->
 <section id="hero">
-  <div class="glass-card" style="margin-bottom:2.5rem; max-width:fit-content; opacity:0; animation: fadeUp 1s ease 0.4s forwards;">
+  <p class="hero-eyebrow" data-tr="Record Label & Dijital Dağıtım" data-en="Record Label & Digital Distribution">Record Label & Dijital Dağıtım</p>
+  <div class="glass-card hero-headline-wrap" style="margin-bottom:2.5rem; max-width:fit-content;">
   <h1 class="hero-headline" style="opacity:1; animation:none;">
     <span data-tr='Müziğinizi tüm <em>dünyaya</em> duyuruyoruz.' data-en='We make your music <em>heard</em> around the world.'>
       Müziğinizi tüm <em>dünyaya</em> duyuruyoruz.
@@ -721,15 +946,15 @@ footer {
 <!-- STATS -->
 <div class="stats-bar">
   <div class="stat-item">
-    <p class="stat-num">180+</p>
+    <p class="stat-num" data-target="180" data-suffix="+">180+</p>
     <p class="stat-label" data-tr="Sanatçı" data-en="Artists">Sanatçı</p>
   </div>
   <div class="stat-item">
-    <p class="stat-num">800+</p>
+    <p class="stat-num" data-target="800" data-suffix="+">800+</p>
     <p class="stat-label" data-tr="Dağıtılmış Şarkı &amp; Albüm" data-en="Distributed Tracks &amp; Albums">Dağıtılmış Şarkı &amp; Albüm</p>
   </div>
   <div class="stat-item">
-    <p class="stat-num">200K €</p>
+    <p class="stat-num" data-target="200" data-prefix="" data-suffix="K €">200K €</p>
     <p class="stat-label" data-tr="Dağıtılan Gelir" data-en="Distributed Revenue">Dağıtılan Gelir</p>
   </div>
 </div>
@@ -989,6 +1214,10 @@ footer {
 <!-- FOOTER -->
 <footer>
   <a href="#hero" class="footer-logo">AKYURT MEDIA</a>
+  <div class="footer-social">
+    <a href="https://open.spotify.com" target="_blank" rel="noopener">Spotify</a>
+    <a href="mailto:info@akyurtmedia.com">info@akyurtmedia.com</a>
+  </div>
   <p class="footer-copy" data-tr="© 2025 Akyurt Media. Tüm hakları saklıdır." data-en="© 2025 Akyurt Media. All rights reserved.">
     © 2025 Akyurt Media. Tüm hakları saklıdır.
   </p>
@@ -1026,25 +1255,41 @@ function setLang(lang) {
     el.innerHTML = val;
   });
 
-  // placeholders
   document.querySelectorAll('[data-placeholder-' + lang + ']').forEach(el => {
     el.placeholder = el.getAttribute('data-placeholder-' + lang);
   });
 
-  // nav links
   document.querySelectorAll('.nav-center a[data-tr]').forEach(a => {
     a.textContent = a.getAttribute('data-' + lang);
   });
 
-  // marquee
   document.getElementById('marqueeInner').innerHTML = buildMarquee(lang);
-
-  // html lang attr
   document.documentElement.lang = lang;
 }
 
-// init marquee
 document.getElementById('marqueeInner').innerHTML = buildMarquee('tr');
+
+/* ── SCROLL PROGRESS BAR ── */
+const progressBar = document.getElementById('scroll-progress');
+window.addEventListener('scroll', () => {
+  const scrolled = window.scrollY;
+  const total = document.documentElement.scrollHeight - window.innerHeight;
+  progressBar.style.width = (scrolled / total * 100) + '%';
+}, { passive: true });
+
+/* ── ACTIVE NAV LINK ── */
+const sections = document.querySelectorAll('section[id], div.stats-bar');
+const navLinks = document.querySelectorAll('.nav-center a');
+const observerNav = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navLinks.forEach(a => {
+        a.classList.toggle('nav-active', a.getAttribute('href') === '#' + e.target.id);
+      });
+    }
+  });
+}, { threshold: 0.4 });
+document.querySelectorAll('section[id]').forEach(s => observerNav.observe(s));
 
 /* ── SCROLL REVEAL ── */
 const observer = new IntersectionObserver(entries => {
@@ -1067,6 +1312,48 @@ window.addEventListener('scroll', () => {
   }
 }, { passive: true });
 
+/* ── STAT COUNTER ANIMATION ── */
+function animateCounter(el) {
+  const target = parseInt(el.dataset.target);
+  const suffix = el.dataset.suffix || '';
+  const prefix = el.dataset.prefix || '';
+  const duration = 1800;
+  const start = performance.now();
+  function update(now) {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const current = Math.floor(eased * target);
+    el.textContent = prefix + current + suffix;
+    if (progress < 1) requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+}
+
+const statObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.stat-num[data-target]').forEach(animateCounter);
+      statObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.stats-bar').forEach(el => statObserver.observe(el));
+
+/* ── MOBILE MENU ── */
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const burger = document.getElementById('hamburger');
+  menu.classList.toggle('open');
+  burger.classList.toggle('open');
+  document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+}
+function closeMobileMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
 /* ── FORM SUBMIT ── */
 function handleSubmit(e) {
   e.preventDefault();
@@ -1074,9 +1361,11 @@ function handleSubmit(e) {
   const span = btn.querySelector('span');
   span.textContent = currentLang === 'tr' ? 'Gönderildi' : 'Sent';
   btn.querySelector('svg').innerHTML = '<path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/>';
+  btn.style.borderColor = 'rgba(247,245,240,0.55)';
   setTimeout(() => {
     span.textContent = currentLang === 'tr' ? 'Gönder' : 'Send';
     btn.querySelector('svg').innerHTML = '<path d="M5 12h14M13 6l6 6-6 6"/>';
+    btn.style.borderColor = '';
   }, 3000);
 }
 </script>
